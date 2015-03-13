@@ -24,6 +24,22 @@
     </form>
 </div>
 
+<div id="result"></div>
 
+<script>
+    if(typeof(EventSource)!=="undefined")
+    {
+        //var source=new EventSource("http://172.31.132.72:8000/eventsource/");
+        var source=new EventSource("http://localhost/HiBlog/index.php/Home/Index/login");
+        source.onmessage=function(event)
+        {
+            document.getElementById("result").innerHTML+=event.data + "<br />";
+        };
+    }
+    else
+    {
+        document.getElementById("result").innerHTML="Sorry, your browser does not support server-sent events...";
+    }
+</script>
 </body>
 </html>
